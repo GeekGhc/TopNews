@@ -28,31 +28,32 @@
         </activity>
         <activity
             android:name=".mvp.ui.activities.NewsActivity"
-            android:theme="@style/BaseAppTheme.NoTrans"></activity>
+            android:theme="@style/BaseAppTheme.NoTrans" />
         <activity
             android:name=".mvp.ui.activities.NewsDetailActivity"
             android:theme="@style/BaseAppTheme.NoTrans" />
         <activity
             android:name=".mvp.ui.activities.NewsChannelActivity"
-            android:theme="@style/BaseAppTheme.NoTrans"></activity>
+            android:theme="@style/BaseAppTheme.NoTrans" />
         <activity
             android:name=".mvp.ui.activities.NewsPhotoDetailActivity"
-            android:theme="@style/BaseAppTheme.NoTrans"></activity>
+            android:theme="@style/BaseAppTheme.NoTrans" />
         <activity
             android:name=".mvp.ui.activities.NewsBrowserActivity"
-            android:theme="@style/BaseAppTheme.NoTrans"></activity>
+            android:theme="@style/BaseAppTheme.NoTrans" />
         <activity
             android:name=".mvp.ui.activities.PhotoActivity"
-            android:theme="@style/BaseAppTheme.NoTrans"></activity>
+            android:theme="@style/BaseAppTheme.NoTrans" />
         <activity
             android:name=".mvp.ui.activities.PhotoDetailActivity"
-            android:theme="@style/BaseAppTheme.Trans"></activity>
+            android:theme="@style/BaseAppTheme.Trans" />
         <activity
             android:name=".mvp.ui.activities.AboutActivity"
-            android:theme="@style/BaseAppTheme.NoTrans"></activity>
+            android:theme="@style/BaseAppTheme.NoTrans" />
         <activity
             android:name=".mvp.ui.activities.CalendarActivity"
-            android:label="@string/title_activity_calendar"></activity>
+            android:label="@string/title_activity_calendar" />
+        <activity android:name=".mvp.ui.activities.VideosActivity"></activity>
     </application>
 
 </manifest>

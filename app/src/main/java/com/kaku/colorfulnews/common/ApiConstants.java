@@ -108,7 +108,7 @@ public class ApiConstants {
     public static final String WEATHER_HOST = "http://wthrcdn.etouch.cn/";
 
     /**
-     * 新浪图片新闻
+     * 干货集中营
      */
     public static final String SINA_PHOTO_HOST = "http://gank.io/api/";
 
@@ -120,7 +120,6 @@ public class ApiConstants {
     public static final String SINA_PHOTO_PRETTY_ID = "hdpic_pretty";
     // 故事列表
     public static final String SINA_PHOTO_STORY_ID = "hdpic_story";
-
     // 图片详情
     public static final String SINA_PHOTO_DETAIL_ID = "hdpic_hdpic_toutiao_4";
 

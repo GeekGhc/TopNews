@@ -1,4 +1,4 @@
-
+//新闻图片的信息
 package com.kaku.colorfulnews.mvp.ui.activities;
 
 import android.animation.Animator;

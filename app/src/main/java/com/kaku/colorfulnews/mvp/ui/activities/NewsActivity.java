@@ -92,6 +92,7 @@ public class NewsActivity extends BaseActivity
         mPresenter.attachView(this);
     }
 
+    //打开新闻频道  移动头部
     @OnClick({R.id.fab, R.id.add_channel_iv})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -103,9 +104,7 @@ public class NewsActivity extends BaseActivity
                 startActivity(intent);
                 break;
         }
-
     }
-
 
     @Override
     public void initViewPager(List<NewsChannelTable> newsChannels) {
@@ -116,6 +115,7 @@ public class NewsActivity extends BaseActivity
         }
     }
 
+    //设置新闻列表
     private void setNewsList(List<NewsChannelTable> newsChannels, List<String> channelNames) {
         mNewsFragmentList.clear();
         for (NewsChannelTable newsChannel : newsChannels) {
@@ -135,6 +135,7 @@ public class NewsActivity extends BaseActivity
         return fragment;
     }
 
+    //设置显示叶爱民
     private void setViewPager(List<String> channelNames) {
         NewsFragmentPagerAdapter adapter = new NewsFragmentPagerAdapter(
                 getSupportFragmentManager(), channelNames, mNewsFragmentList);
@@ -149,6 +150,7 @@ public class NewsActivity extends BaseActivity
         mViewPager.setCurrentItem(currentViewPagerPosition, false);
     }
 
+    //获取当前显示页面位置
     private int getCurrentViewPagerPosition() {
         int position = 0;
         if (mCurrentViewPagerName != null) {
@@ -161,6 +163,7 @@ public class NewsActivity extends BaseActivity
         return position;
     }
 
+    //监听页面变化的事件
     private void setPageChangeListener() {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
