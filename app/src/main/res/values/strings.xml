@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">今日头条</string>
+    <string name="version">v1.0</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_channel">频道</string>
+
+    <!--menu-->
+    <string name="news">新闻</string>
+    <string name="zhihu">知乎</string>
+    <string name="calendar">日历</string>
+    <string name="photo">图片</string>
+    <string name="video">视频</string>
+    <string name="tools">设置</string>
+    <string name="no_photo_mode">无图模式</string>
+    <string name="night_mode">夜间模式</string>
+    <string name="about">关于</string>
+
+    <!-- 新闻 -->
+    <string name="load_error">加载失败</string>
+    <string name="db_error">数据库出错了</string>
+    <string name="internet_error">网络异常,请检查网络设置</string>
+    <string name="news_from">%1$s %2$s</string>
+    <string name="loading">加载中…</string>
+    <string name="no_more">没有更多了</string>
+    <string name="photo_collections">图集：%1$s</string>
+    <string name="photo_detail_title">%1$d/%2$d　%3$s</string>
+    <string name="photo_news">图片新闻</string>
+    <string name="retry_after">请稍后重试</string>
+    <string name="share">分享</string>
+    <string name="share_contents">来自「多彩资讯」的分享：%1$s %2$s</string>
+    <string name="web_view">WebView</string>
+    <string name="browser">用浏览器打开</string>
+    <string name="retry_refresh_news">点我一下 重新加载</string>
+
+    <!-- 共享过度动画 -->
+    <string name="transition_photos">transition_animation_news_photos</string>
+
+    <!-- 新闻频道 -->
+    <string name="channel_explain">点击可增删/长按并拖拽可排序</string>
+    <string name="my_channel">我的频道</string>
+    <string name="more_channel">更多频道</string>
+    <string name="channel_manage">频道管理</string>
+
+    <!-- 图片 -->
+    <string name="girl">妹纸</string>
+    <string name="error_try_again">错误，请重试</string>
+    <string name="save">保存</string>
+    <string name="set_wallpaper">设为壁纸</string>
+    <string name="picture_already_save_to">图片已保存至%1$s</string>
+    <string name="set_wallpaper_success">设置壁纸成功</string>
+    <string name="about_msg">
+        类似于今日头条的新闻客户端
+    </string>
+
+
+    <string name="author_name">作者:\t\tJellyBean</string>
+    <string name="author_email">Email:\t\tgehuachun@outlook.com</string>
+    <string name="about_address">项目地址:\nhttps://github.com/GeekGhc/TopNews</string>
+    <string name="about_project">项目简介:\n安卓版头条app 提供及时咨询 新闻以及最适合你的消息看点</string>
+    <string name="about_info">TopNews\t\t\tV1.1.0</string>
+
+</resources>
