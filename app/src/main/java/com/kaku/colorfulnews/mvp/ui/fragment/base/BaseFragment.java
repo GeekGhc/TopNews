@@ -34,10 +34,6 @@ import com.squareup.leakcanary.RefWatcher;
 import butterknife.ButterKnife;
 import rx.Subscription;
 
-/**
- * @author 咖枯
- * @version 1.0 2016/5/20
- */
 public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
 
     public FragmentComponent getFragmentComponent() {

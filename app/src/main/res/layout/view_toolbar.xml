@@ -6,5 +6,6 @@
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
     app:titleTextColor="@android:color/white"
-    android:background="@color/colorCard"
+    android:background="@color/colorPrimaryDark"
+    android:minHeight="56dp"
    />

@@ -1,22 +1,16 @@
-
 package com.kaku.colorfulnews.mvp.ui.activities;
 
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.app.Activity;
 
 import com.kaku.colorfulnews.R;
 import com.kaku.colorfulnews.mvp.ui.activities.base.BaseActivity;
 
-import butterknife.BindView;
-
-
-public class AboutActivity extends BaseActivity {
-
+public class CalendarActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_about;
+        return R.layout.fragment_calender;
     }
 
     @Override
@@ -29,4 +23,5 @@ public class AboutActivity extends BaseActivity {
 //        mMsgTv.setAutoLinkMask(Linkify.ALL);
 //        mMsgTv.setMovementMethod(LinkMovementMethod.getInstance());
     }
+
 }

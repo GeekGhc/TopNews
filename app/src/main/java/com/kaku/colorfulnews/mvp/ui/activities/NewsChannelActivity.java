@@ -44,10 +44,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import rx.functions.Action1;
 
-/**
- * @author 咖枯
- * @version 1.0 2016/6/29
- */
+
 public class NewsChannelActivity extends BaseActivity implements NewsChannelView {
 
     @BindView(R.id.toolbar)
