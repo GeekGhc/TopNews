@@ -1,3 +1,4 @@
+//activity进程注入
 package com.kaku.colorfulnews.di.component;
 
 import android.app.Activity;
@@ -13,6 +14,7 @@ import com.kaku.colorfulnews.mvp.ui.activities.NewsPhotoDetailActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoDetailActivity;
 
+
 import dagger.Component;
 
 @PerActivity
@@ -26,6 +28,7 @@ public interface ActivityComponent {
     Context getApplicationContext();
 
     Activity getActivity();
+
 
     void inject(NewsActivity newsActivity);
 

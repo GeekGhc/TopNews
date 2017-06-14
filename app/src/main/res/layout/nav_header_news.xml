@@ -12,22 +12,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/iv_avatar"
-        android:layout_width="@dimen/avatar_width"
-        android:layout_height="@dimen/avatar_height"
-        android:src="@drawable/avatar"
-        app:civ_border_color="@android:color/white"
-        app:civ_border_width="2dp"
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GeekGhc"
+        android:textSize="20sp"
+        android:layout_marginTop="12dp"
         />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Become a good programmer"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
 </LinearLayout>

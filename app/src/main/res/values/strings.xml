@@ -62,5 +62,6 @@
     <string name="about_project">项目简介:\n安卓版头条app 提供及时咨询 新闻以及最适合你的消息看点</string>
     <string name="about_info">TopNews\t\t\tV1.1.0</string>
     <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
 
 </resources>

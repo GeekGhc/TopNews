@@ -53,7 +53,17 @@
         <activity
             android:name=".mvp.ui.activities.CalendarActivity"
             android:label="@string/title_activity_calendar" />
-        <activity android:name=".mvp.ui.activities.VideosActivity"></activity>
+        <activity android:name=".mvp.ui.activities.VideosActivity" />
+        <activity
+            android:name=".mvp.ui.activities.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:theme="@style/BaseAppTheme.Login">
+
+        </activity>
+
+        <activity
+            android:name=".mvp.ui.activities.LoginActivity"
+            android:theme="@style/BaseAppTheme.Login"></activity>
     </application>
 
 </manifest>

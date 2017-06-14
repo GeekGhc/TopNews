@@ -1,4 +1,4 @@
-
+//新闻列表页
 package com.kaku.colorfulnews.mvp.ui.activities;
 
 import android.content.Intent;
@@ -42,17 +42,17 @@ public class NewsActivity extends BaseActivity
     private String mCurrentViewPagerName;
     private List<String> mChannelNames;
 
-    @BindView(R.id.toolbar)
+    @BindView(R.id.toolbar)//头部板块
     Toolbar mToolbar;
-    @BindView(R.id.tabs)
+    @BindView(R.id.tabs)//选项卡(新闻类型)
     TabLayout mTabs;
-    @BindView(R.id.view_pager)
+    @BindView(R.id.view_pager)//新闻展示内容页
     ViewPager mViewPager;
-    @BindView(R.id.nav_view)
+    @BindView(R.id.nav_view)//侧边栏
     NavigationView mNavView;
-    @BindView(R.id.fab)
+    @BindView(R.id.fab)//新闻详情页收藏
     FloatingActionButton mFab;
-    @BindView(R.id.drawer_layout)
+    @BindView(R.id.drawer_layout)//替换页面
     DrawerLayout mDrawerLayout;
 
     @Inject

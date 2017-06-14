@@ -42,6 +42,7 @@ public class SplashActivity extends AppCompatActivity {
         initAnimation();
     }
 
+    //启动画面的动画
     private void initAnimation() {
         startLogoInner1();
         startLogoOuterAndAppName();
@@ -87,6 +88,7 @@ public class SplashActivity extends AppCompatActivity {
 //        YoYo.with(Techniques.Bounce).duration(1000).playOn(mLogoInnerIv);
     }
 
+    //跳转到新闻详情页
     private void finishActivity() {
         Observable.timer(1000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
