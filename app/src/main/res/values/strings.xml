@@ -64,4 +64,7 @@
     <string name="title_activity_calendar">CalendarActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
 
+    <string name="user_login">登录</string>
+    <string name="user_register">用户注册</string>
+
 </resources>

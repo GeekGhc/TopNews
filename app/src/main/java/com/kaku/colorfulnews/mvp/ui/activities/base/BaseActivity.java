@@ -40,11 +40,14 @@ import com.kaku.colorfulnews.mvp.ui.activities.NewsActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.NewsDetailActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoDetailActivity;
+import com.kaku.colorfulnews.mvp.ui.activities.RegisterActivity;
 import com.kaku.colorfulnews.utils.MyUtils;
 import com.kaku.colorfulnews.utils.NetUtil;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.socks.library.KLog;
 import com.squareup.leakcanary.RefWatcher;
+
+import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,6 +78,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected Subscription mSubscription;
     protected NavigationView mBaseNavView;
 
+    protected View drawHeader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +104,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         }
 
         initNightModeSwitch();
-
     }
 
     private void initAnnotation() {
@@ -198,6 +202,28 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             });
         }
 
+        //头部登录注册
+        drawHeader  = navView.getHeaderView(0);
+        TextView login = (TextView)drawHeader.findViewById(R.id.login_activity);
+        Toast.makeText(BaseActivity.this, "data = "+login.getText(), Toast.LENGTH_SHORT).show();
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(BaseActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        TextView register = (TextView)drawHeader.findViewById(R.id.register_activity);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(BaseActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         mDrawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -210,7 +236,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
                     overridePendingTransition(0, 0);
                     mClass = null;
                 }
-
                 if (mIsChangeTheme) {
                     mIsChangeTheme = false;
                     getWindow().setWindowAnimations(R.style.WindowAnimationFadeInOut);

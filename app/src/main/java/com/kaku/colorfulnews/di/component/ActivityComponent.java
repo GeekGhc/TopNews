@@ -7,12 +7,14 @@ import android.content.Context;
 import com.kaku.colorfulnews.di.module.ActivityModule;
 import com.kaku.colorfulnews.di.scope.ContextLife;
 import com.kaku.colorfulnews.di.scope.PerActivity;
+import com.kaku.colorfulnews.mvp.ui.activities.LoginActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.NewsActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.NewsChannelActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.NewsDetailActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.NewsPhotoDetailActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoDetailActivity;
+import com.kaku.colorfulnews.mvp.ui.activities.RegisterActivity;
 
 
 import dagger.Component;
@@ -41,4 +43,8 @@ public interface ActivityComponent {
     void inject(PhotoActivity photoActivity);
 
     void inject(PhotoDetailActivity photoDetailActivity);
+
+    void inject(LoginActivity loginActivity);
+
+    void inject(RegisterActivity registerActivity);
 }

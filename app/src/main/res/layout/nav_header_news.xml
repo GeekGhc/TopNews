@@ -12,14 +12,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-
-    <com.kaku.colorfulnews.mvp.view.RoundImageView
-        android:id="@+id/roundImageView"
-        android:layout_width="62dp"
-        android:layout_height="62dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/avatar" />
-
     <LinearLayout
         android:id="@+id/login_activity_group"
         android:layout_width="match_parent"
@@ -32,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:clickable="true"
             android:text="登录  |"
             android:textSize="18sp" />
 
@@ -40,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:clickable="true"
             android:text="  注册"
             android:textSize="18sp" />
 
