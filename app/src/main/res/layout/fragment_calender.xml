@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <include layout="@layout/view_toolbar"
-        android:id="@+id/toolbar"/>
+        android:id="@+id/toolbar_view"/>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_collapseMode="pin"
+        app:navigationIcon="?homeAsUpIndicator"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimaryDark"
+        android:subtitleTextColor="@android:color/white"
+        app:title="@string/calendar" />
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -23,4 +35,5 @@
         android:text="确定"
         android:textColor="@color/colorPrimary"
         android:layout_gravity="end" />
+
 </LinearLayout>

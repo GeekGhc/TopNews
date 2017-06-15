@@ -30,5 +30,4 @@ public class CalendarActivity extends BaseActivity {
 //        mMsgTv.setAutoLinkMask(Linkify.ALL);
 //        mMsgTv.setMovementMethod(LinkMovementMethod.getInstance());
     }
-
 }

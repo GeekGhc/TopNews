@@ -57,13 +57,11 @@
         <activity
             android:name=".mvp.ui.activities.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:theme="@style/BaseAppTheme.Login">
-
-        </activity>
-
+            android:theme="@style/BaseAppTheme.Login"></activity>
         <activity
             android:name=".mvp.ui.activities.LoginActivity"
-            android:theme="@style/BaseAppTheme.Login"></activity>
+            android:theme="@style/BaseAppTheme.Login" />
+        <activity android:name=".mvp.ui.activities.DrawerActivity"></activity>
     </application>
 
 </manifest>

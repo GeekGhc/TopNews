@@ -21,6 +21,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kaku.colorfulnews.App;
@@ -32,6 +34,8 @@ import com.kaku.colorfulnews.di.module.ActivityModule;
 import com.kaku.colorfulnews.mvp.presenter.base.BasePresenter;
 import com.kaku.colorfulnews.mvp.ui.activities.AboutActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.CalendarActivity;
+import com.kaku.colorfulnews.mvp.ui.activities.DrawerActivity;
+import com.kaku.colorfulnews.mvp.ui.activities.LoginActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.NewsActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.NewsDetailActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoActivity;
@@ -42,6 +46,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.socks.library.KLog;
 import com.squareup.leakcanary.RefWatcher;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Subscription;
 
@@ -94,6 +99,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         }
 
         initNightModeSwitch();
+
     }
 
     private void initAnnotation() {
@@ -175,7 +181,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
                             mClass = PhotoActivity.class;
                             break;
                         case R.id.nav_video:
-                            Toast.makeText(BaseActivity.this, "施工准备中...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BaseActivity.this, "正在开发中...", Toast.LENGTH_SHORT).show();
                             break;
                         case R.id.nav_about:
                             mClass = AboutActivity.class;
@@ -212,6 +218,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
                 }
             }
         });
+
     }
 
     @Override
@@ -223,6 +230,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         }
     }
 
+    //设置夜/日模式
     private void setNightOrDayMode() {
         if (MyUtils.isNightMode()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -249,12 +257,14 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         }
     }
 
+    //切换到日间模式
     public void changeToDay() {
 //        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         mNightView.setBackgroundResource(android.R.color.transparent);
     }
 
+    //切换到夜间模式
     public void changeToNight() {
 //        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -262,6 +272,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         mNightView.setBackgroundResource(R.color.night_mask);
     }
 
+
+    //初始化夜间模块
     private void initNightView() {
         if (mIsAddedView) {
             return;
