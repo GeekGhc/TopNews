@@ -96,4 +96,7 @@
     <color name="aluminum">#999999</color>
     <color name="base">#AAAAAA</color>
     <color name="iron">#CCCCCC</color>
+
+    <color name="login_qq">#498ad5</color>
+    <color name="login_weibo">#ff8140</color>
 </resources>

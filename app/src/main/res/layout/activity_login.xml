@@ -73,10 +73,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/alpha_85_white"
-            android:padding="12dp"
+            android:background="@color/login_weibo"
+            android:padding="2dp"
             android:text="微博登录"/>
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_login_qq"
             android:layout_width="fill_parent"
@@ -84,7 +86,8 @@
             android:layout_marginTop="2dp"
             android:layout_marginBottom="8dp"
             android:textColor="@color/alpha_85_white"
-            android:padding="12dp"
+            android:padding="2dp"
+            android:background="@color/login_qq"
             android:text="QQ登录"/>
     </LinearLayout>
 

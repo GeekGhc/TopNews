@@ -205,8 +205,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         //头部登录注册
         drawHeader  = navView.getHeaderView(0);
         TextView login = (TextView)drawHeader.findViewById(R.id.login_activity);
-        Toast.makeText(BaseActivity.this, "data = "+login.getText(), Toast.LENGTH_SHORT).show();
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
