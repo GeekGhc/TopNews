@@ -1,24 +1,34 @@
 package com.kaku.colorfulnews.mvp.ui.activities;
 
+import android.accounts.NetworkErrorException;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kaku.colorfulnews.R;
 import com.kaku.colorfulnews.http.MyHttpClientImpl;
+import com.kaku.colorfulnews.mvp.ui.activities.base.BaseActivity;
+import com.kaku.colorfulnews.utils.AsyncNetUtil;
+import com.kaku.colorfulnews.utils.NetUtil;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.adapter.rxjava.HttpException;
 
-public class RegisterActivity extends Activity implements MyHttpClientImpl{
+public class RegisterActivity extends Activity{
 
     @BindView(R.id.link_login)
     TextView login;
@@ -33,6 +43,8 @@ public class RegisterActivity extends Activity implements MyHttpClientImpl{
     private String email;
     private String name;
     private String password;
+    private String url;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +61,8 @@ public class RegisterActivity extends Activity implements MyHttpClientImpl{
                 startActivity(intent);
                 break;
             case R.id.btn_signup:
-
+                sign();
+                break;
         }
     }
 
@@ -59,26 +72,17 @@ public class RegisterActivity extends Activity implements MyHttpClientImpl{
         this.email = this.input_email.getText().toString();
         this.password = this.input_password.getText().toString();
 
-        post_request();
-    }
+        String content = "name="+this.name+"&email="+this.email+"&password="+this.password;
 
-    public void get_request(){
-
-    }
-
-    public void post_request(){
-        new Thread(new Runnable() {
+        AsyncNetUtil.post("http://10.0.3.2:8000/api/user/register", content,new AsyncNetUtil.Callback(){
             @Override
-            public void run() {
-                try{
-                    
-
-                }catch (Exception e) {
-                    e.printStackTrace();
-                }
+            public void onResponse(String response) {
+                Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                Toast.makeText(RegisterActivity.this, "返回 = "+response, Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 
 }

@@ -20,11 +20,7 @@
             android:name=".mvp.ui.activities.SplashActivity"
             android:excludeFromRecents="false"
             android:theme="@style/BaseAppTheme.Trans">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".mvp.ui.activities.NewsActivity"
@@ -59,7 +55,11 @@
             android:name=".mvp.ui.activities.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/BaseAppTheme.Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
