@@ -48,7 +48,7 @@ public class PhotoActivity extends BaseActivity implements PhotoView, SwipeRefre
     @BindView(R.id.photo_rv)
     RecyclerView mPhotoRv;
     @BindView(R.id.nav_view)
-    NavigationView mNavView;
+    NavigationView mNavView;//侧边栏
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
     @BindView(R.id.progress_bar)
@@ -56,7 +56,7 @@ public class PhotoActivity extends BaseActivity implements PhotoView, SwipeRefre
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.empty_view)
-    TextView mEmptyView;
+    TextView mEmptyView;//为空重新加载的页面
     @BindView(R.id.fab)
     FloatingActionButton mFab;
 

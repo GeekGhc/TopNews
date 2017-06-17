@@ -40,8 +40,8 @@ android {
 
 buildscript {
     repositories {
-        mavenCentral()
         jcenter()
+        mavenCentral()
     }
 }
 

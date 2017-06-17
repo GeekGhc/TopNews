@@ -13,6 +13,7 @@ import com.google.gson.JsonParser;
 import com.kaku.colorfulnews.R;
 import com.kaku.colorfulnews.event.ScrollToTopEvent;
 import com.kaku.colorfulnews.mvp.ui.activities.base.BaseActivity;
+import com.kaku.colorfulnews.mvp.ui.adapter.PersonAdapter;
 import com.kaku.colorfulnews.utils.AsyncNetUtil;
 import com.kaku.colorfulnews.utils.RxBus;
 
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private String email;
     private String password;
     private JSONArray jsonArray = null;
+    private JSONObject jsonObject;
     private String jsonString = "";
 
 
@@ -67,7 +69,6 @@ public class LoginActivity extends AppCompatActivity {
         this.password = this.input_password.getText().toString();
 
         String content = "email=" + this.email + "&password=" + this.password;
-
         AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/user/login", content, new AsyncNetUtil.Callback() {
             @Override
             public void onResponse(String response) {
@@ -75,10 +76,17 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     jsonString = "[" + response + "]";
                     jsonArray = new JSONArray(jsonString);
-                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    jsonObject = jsonArray.getJSONObject(0);
                     if (jsonObject.getString("status").equals("success")) {
-                        Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                        /*jsonString = "["+jsonObject.getString("user")+"]";
+                        jsonArray = new JSONArray(jsonString);
+                        jsonObject = jsonArray.getJSONObject(0);
+                        PersonAdapter personAdapter = new PersonAdapter(jsonObject.getString("id"),jsonObject.getString("name"),jsonObject.getString("avatar"),jsonObject.getString("desc"));
+                        Bundle data = new Bundle();
+                        data.putSerializable("user",personAdapter);*/
+                        Toast.makeText(LoginActivity.this, "登录成功"+jsonObject.getString("name"), Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, NewsActivity.class);
+//                        intent.putExtras(data);
                         startActivity(intent);
                     } else {
                         Toast.makeText(LoginActivity.this, "密码或者邮箱错误", Toast.LENGTH_SHORT).show();
@@ -90,5 +98,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 }

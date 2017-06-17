@@ -1,4 +1,3 @@
-
 package com.kaku.colorfulnews.mvp.ui.activities.base;
 
 import android.annotation.TargetApi;

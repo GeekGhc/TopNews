@@ -70,6 +70,8 @@ public class NewsActivity extends BaseActivity
                         mNewsPresenter.onChannelDbChanged();
                     }
                 });
+
+        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
     }
 
 
@@ -87,7 +89,6 @@ public class NewsActivity extends BaseActivity
     public void initViews() {
 //        mIsHasNavigationView = true;
         mBaseNavView = mNavView;
-
         mPresenter = mNewsPresenter;
         mPresenter.attachView(this);
     }
