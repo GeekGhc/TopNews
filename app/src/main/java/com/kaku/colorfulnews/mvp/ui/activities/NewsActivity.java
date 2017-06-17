@@ -12,6 +12,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.kaku.colorfulnews.R;
 import com.kaku.colorfulnews.annotation.BindValues;
@@ -22,6 +24,7 @@ import com.kaku.colorfulnews.greendao.NewsChannelTable;
 import com.kaku.colorfulnews.mvp.presenter.impl.NewPresenterImpl;
 import com.kaku.colorfulnews.mvp.ui.activities.base.BaseActivity;
 import com.kaku.colorfulnews.mvp.ui.adapter.PagerAdapter.NewsFragmentPagerAdapter;
+import com.kaku.colorfulnews.mvp.ui.adapter.PersonAdapter;
 import com.kaku.colorfulnews.mvp.ui.fragment.NewsListFragment;
 import com.kaku.colorfulnews.mvp.view.NewsView;
 import com.kaku.colorfulnews.utils.MyUtils;
@@ -72,6 +75,18 @@ public class NewsActivity extends BaseActivity
                 });
 
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+        this.drawHeader = navView.getHeaderView(0);
+        Intent intent = getIntent();
+        PersonAdapter personAdapter = (PersonAdapter)intent.getSerializableExtra("user");
+        if(personAdapter!=null){
+            LinearLayout login_activity_group = (LinearLayout)drawHeader.findViewById(R.id.login_activity_group);
+            login_activity_group.setVisibility(View.GONE);
+            LinearLayout user_activity_info = (LinearLayout)drawHeader.findViewById(R.id.user_info);
+            user_activity_info.setVisibility(View.VISIBLE);
+            TextView user_name =(TextView)drawHeader.findViewById(R.id.hd_name);
+            user_name.setText(personAdapter.getUserName());
+        }
+
     }
 
 

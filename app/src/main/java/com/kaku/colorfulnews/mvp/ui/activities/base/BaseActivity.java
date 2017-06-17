@@ -79,6 +79,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 
     protected View drawHeader;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:visibility="gone"
+        android:visibility="visible"
         android:orientation="horizontal">
 
         <TextView
@@ -47,19 +47,17 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
+        android:visibility="gone"
        >
-
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.kaku.colorfulnews.mvp.view.RoundImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
+            android:id="@+id/hd_avatar"
             android:layout_width="62dp"
             android:layout_height="62dp"
-            android:src="@drawable/avatar"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            android:src="@drawable/avatar" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/hd_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -67,7 +65,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/hd_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"

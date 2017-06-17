@@ -78,15 +78,15 @@ public class LoginActivity extends AppCompatActivity {
                     jsonArray = new JSONArray(jsonString);
                     jsonObject = jsonArray.getJSONObject(0);
                     if (jsonObject.getString("status").equals("success")) {
-                        /*jsonString = "["+jsonObject.getString("user")+"]";
+                        jsonString = "["+jsonObject.getString("user")+"]";
                         jsonArray = new JSONArray(jsonString);
                         jsonObject = jsonArray.getJSONObject(0);
                         PersonAdapter personAdapter = new PersonAdapter(jsonObject.getString("id"),jsonObject.getString("name"),jsonObject.getString("avatar"),jsonObject.getString("desc"));
                         Bundle data = new Bundle();
-                        data.putSerializable("user",personAdapter);*/
+                        data.putSerializable("user",personAdapter);
                         Toast.makeText(LoginActivity.this, "登录成功"+jsonObject.getString("name"), Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, NewsActivity.class);
-//                        intent.putExtras(data);
+                        intent.putExtras(data);
                         startActivity(intent);
                     } else {
                         Toast.makeText(LoginActivity.this, "密码或者邮箱错误", Toast.LENGTH_SHORT).show();
