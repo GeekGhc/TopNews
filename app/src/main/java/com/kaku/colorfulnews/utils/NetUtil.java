@@ -11,6 +11,10 @@ import android.widget.Toast;
 import com.kaku.colorfulnews.App;
 import com.kaku.colorfulnews.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -18,6 +22,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class NetUtil {
@@ -146,7 +153,35 @@ public class NetUtil {
         is.close();
         String state = os.toString();// 把流中的数据转换成字符串,采用的编码是utf-8(模拟器默认编码)
         os.close();
-        return state;
+        return new String(os.toByteArray());
+    }
+
+
+    /*private static ArrayList<HashMap<String,Object>> getMapFromJsonString(String jsonStr) throws JSONException{
+        JSONArray jsonArray = null;
+        ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+        jsonArray = new JSONArray(jsonStr);
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("status", jsonObject.getString("status"));
+            map.put("user", jsonObject.getString("user"));
+            list.add(map);
+        }
+        return list;
+    }*/
+
+    //inputStream 转化成byte数组
+    private static byte[] readStream(InputStream inputStream) throws Exception {
+        ByteArrayOutputStream bout = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            bout.write(buffer, 0, len);
+        }
+        bout.close();
+        inputStream.close();
+        return bout.toByteArray();
     }
 
 }

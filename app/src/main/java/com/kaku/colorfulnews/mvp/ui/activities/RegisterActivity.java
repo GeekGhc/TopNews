@@ -74,7 +74,7 @@ public class RegisterActivity extends Activity{
 
         String content = "name="+this.name+"&email="+this.email+"&password="+this.password;
 
-        AsyncNetUtil.post("http://10.0.3.2:8000/api/user/register", content,new AsyncNetUtil.Callback(){
+        AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/user/register", content,new AsyncNetUtil.Callback(){
             @Override
             public void onResponse(String response) {
                 Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
