@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
@@ -76,6 +77,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
     private URLImageGetter mUrlImageGetter;
     private String mNewsTitle;
     private String mShareLink;
+    App app;
 
     @Override
     public int getLayoutId() {
@@ -90,6 +92,8 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
     @Override
     public void initViews() {
         String postId = getIntent().getStringExtra(Constants.NEWS_POST_ID);
+        Toast.makeText(NewsDetailActivity.this, "postId = " + postId, Toast.LENGTH_LONG).show();
+
         mNewsDetailPresenter.setPosId(postId);
         mPresenter = mNewsDetailPresenter;
         mPresenter.attachView(this);
@@ -97,7 +101,9 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        app = (App) getApplication();
     }
 
     @SuppressWarnings("deprecation")
@@ -124,6 +130,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         mToolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.primary_text_white));
     }
 
+    //设置新闻详细的图片
     private void setNewsDetailPhotoIv(String imgSrc) {
         Glide.with(this).load(imgSrc).asBitmap()
                 .placeholder(R.drawable.ic_loading)
@@ -139,6 +146,8 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
                 })*/;
     }
 
+
+    //新闻的详细信息
     private void setNewsDetailBodyTv(final NewsDetail newsDetail, final String newsBody) {
         mSubscription = Observable.timer(500, TimeUnit.MILLISECONDS)
                 .compose(TransformUtils.<Long>defaultSchedulers())
@@ -273,12 +282,23 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         share();
     }
 
+    private boolean isCollected() {
+        return true;
+    }
+
     private void share() {
-        Intent intent = new Intent(Intent.ACTION_SEND);
+
+        /*Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share));
         intent.putExtra(Intent.EXTRA_TEXT, getShareContents());
-        startActivity(Intent.createChooser(intent, getTitle()));
+        startActivity(Intent.createChooser(intent, getTitle()));*/
+
+        if (app.person.getUserId().isEmpty()) {
+            Toast.makeText(NewsDetailActivity.this, "你还没有登录哦--", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(NewsDetailActivity.this, app.person.getUserName() + " 你点击了分享按钮哦--" + app.person.getUserId(), Toast.LENGTH_LONG).show();
+        }
     }
 
     @NonNull

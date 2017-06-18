@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:textColor="@color/alpha_10_white"
+                android:textColor="@color/colorCard"
                 android:hint="Name" />
         </android.support.design.widget.TextInputLayout>
 
@@ -40,12 +40,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_email"
+
+            <EditText
+                android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/alpha_10_white"
-                android:hint="Email" />
+                android:textColor="@color/colorCard" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
@@ -61,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:textColor="@color/alpha_10_white" />
+                android:textColor="@color/colorCard" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Signup Button -->

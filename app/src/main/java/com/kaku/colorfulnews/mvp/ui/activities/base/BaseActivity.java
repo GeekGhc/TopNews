@@ -40,6 +40,7 @@ import com.kaku.colorfulnews.mvp.ui.activities.NewsDetailActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoDetailActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.RegisterActivity;
+import com.kaku.colorfulnews.mvp.ui.adapter.PersonAdapter;
 import com.kaku.colorfulnews.utils.MyUtils;
 import com.kaku.colorfulnews.utils.NetUtil;
 import com.readystatesoftware.systembartint.SystemBarTintManager;

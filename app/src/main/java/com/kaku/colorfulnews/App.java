@@ -15,6 +15,7 @@ import com.kaku.colorfulnews.di.module.ApplicationModule;
 import com.kaku.colorfulnews.greendao.DaoMaster;
 import com.kaku.colorfulnews.greendao.DaoSession;
 import com.kaku.colorfulnews.greendao.NewsChannelTableDao;
+import com.kaku.colorfulnews.mvp.ui.adapter.PersonAdapter;
 import com.kaku.colorfulnews.utils.MyUtils;
 import com.socks.library.KLog;
 import com.squareup.leakcanary.LeakCanary;
@@ -24,6 +25,7 @@ import de.greenrobot.dao.query.QueryBuilder;
 
 public class App extends Application {
 
+    public PersonAdapter person = null;
     private  ApplicationComponent mApplicationComponent;
     private RefWatcher refWatcher;
 
@@ -47,7 +49,7 @@ public class App extends Application {
         // 官方推荐将获取 DaoMaster 对象的方法放到 Application 层，这样将避免多次创建生成 Session 对象
         setupDatabase();
         initApplicationComponent();
-
+        person = new PersonAdapter();
     }
 
     private void initLeakCanary() {

@@ -4,10 +4,15 @@ package com.kaku.colorfulnews.mvp.ui.adapter;
 import java.io.Serializable;
 
 public class PersonAdapter implements Serializable{
-    private String userId;
-    private String name;
-    private String avatarSrc;
-    private String desc;
+    private String userId = "";
+    private String name = "";
+    private String avatarSrc = "";
+    private String desc ;
+
+    public PersonAdapter()
+    {
+
+    }
 
     public PersonAdapter(String userId,String name,String avatarSrc,String desc)
     {
@@ -16,6 +21,7 @@ public class PersonAdapter implements Serializable{
         this.avatarSrc = avatarSrc;
         this.desc  = desc;
     }
+
     public void setUserId(String Id) {
         this.userId = Id;
     }
