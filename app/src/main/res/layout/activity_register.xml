@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/login_bg"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -11,7 +12,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="32dp"
         android:paddingLeft="24dp"
-        android:background="@drawable/login_bg"
         android:paddingRight="24dp">
 
         <ImageView android:src="@mipmap/ic_launcher"
@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:textColor="@color/colorCard"
+                android:textColor="@color/alpha_10_white"
                 android:hint="Name" />
         </android.support.design.widget.TextInputLayout>
 
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/colorCard"
+                android:textColor="@color/alpha_10_white"
                 android:hint="Email" />
         </android.support.design.widget.TextInputLayout>
 
@@ -54,12 +54,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_password"
+
+            <EditText
+                android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Password"
                 android:inputType="textPassword"
-                android:textColor="@color/colorCard"
-                android:hint="Password"/>
+                android:textColor="@color/alpha_10_white" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Signup Button -->
