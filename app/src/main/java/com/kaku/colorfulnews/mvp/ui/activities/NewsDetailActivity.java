@@ -31,12 +31,18 @@ import com.kaku.colorfulnews.common.Constants;
 import com.kaku.colorfulnews.mvp.entity.NewsDetail;
 import com.kaku.colorfulnews.mvp.presenter.impl.NewsDetailPresenterImpl;
 import com.kaku.colorfulnews.mvp.ui.activities.base.BaseActivity;
+import com.kaku.colorfulnews.mvp.ui.adapter.PersonAdapter;
 import com.kaku.colorfulnews.mvp.view.NewsDetailView;
+import com.kaku.colorfulnews.utils.AsyncNetUtil;
 import com.kaku.colorfulnews.utils.MyUtils;
 import com.kaku.colorfulnews.utils.NetUtil;
 import com.kaku.colorfulnews.utils.TransformUtils;
 import com.kaku.colorfulnews.widget.URLImageGetter;
 import com.socks.library.KLog;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -78,6 +84,12 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
     private String mNewsTitle;
     private String mShareLink;
     App app;
+    private String postId;
+    private String userId;
+    private String newsUrl;
+    private JSONArray jsonArray = null;
+    private JSONObject jsonObject;
+    private String jsonString = "";
 
     @Override
     public int getLayoutId() {
@@ -91,7 +103,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
 
     @Override
     public void initViews() {
-        String postId = getIntent().getStringExtra(Constants.NEWS_POST_ID);
+        postId = getIntent().getStringExtra(Constants.NEWS_POST_ID);
         Toast.makeText(NewsDetailActivity.this, "postId = " + postId, Toast.LENGTH_LONG).show();
 
         mNewsDetailPresenter.setPosId(postId);
@@ -295,9 +307,32 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         startActivity(Intent.createChooser(intent, getTitle()));*/
 
         if (app.person.getUserId().isEmpty()) {
-            Toast.makeText(NewsDetailActivity.this, "你还没有登录哦--", Toast.LENGTH_LONG).show();
+            Toast.makeText(NewsDetailActivity.this, "你还没有登录哦--"+mShareLink, Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(NewsDetailActivity.this, app.person.getUserName() + " 你点击了分享按钮哦--" + app.person.getUserId(), Toast.LENGTH_LONG).show();
+            userId = app.person.getUserId();
+            newsUrl = mShareLink;
+            Toast.makeText(NewsDetailActivity.this, userId+" 你点击了分享按钮哦--" +newsUrl, Toast.LENGTH_LONG).show();
+            String content = "userId=" + this.userId + "&newsUrl=" + this.newsUrl;
+            AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/news/collect", content, new AsyncNetUtil.Callback() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        jsonString = "[" + response + "]";
+                        jsonArray = new JSONArray(jsonString);
+                        jsonObject = jsonArray.getJSONObject(0);
+                        if (jsonObject.getString("status").equals("collect")) {
+                            Toast.makeText(NewsDetailActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
+                            mFab.setImageResource(R.drawable.ic_stared);
+                        } else {
+                            Toast.makeText(NewsDetailActivity.this, "已取消收藏", Toast.LENGTH_SHORT).show();
+                            mFab.setImageResource(R.drawable.ic_star);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
         }
     }
 

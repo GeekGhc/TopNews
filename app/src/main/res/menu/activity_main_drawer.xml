@@ -13,8 +13,8 @@
             android:title="@string/photo" />
         <item
             android:id="@+id/nav_video"
-            android:icon="@drawable/ic_drawer_video"
-            android:title="@string/video" />
+            android:icon="@drawable/ic_share"
+            android:title="@string/collect" />
         <item
             android:id="@+id/nav_calendar"
             android:icon="@drawable/ic_drawer_calendar"

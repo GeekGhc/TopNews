@@ -13,6 +13,7 @@
     <string name="calendar">日历</string>
     <string name="photo">图片</string>
     <string name="video">视频</string>
+    <string name="collect">收藏</string>
     <string name="tools">设置</string>
     <string name="no_photo_mode">无图模式</string>
     <string name="night_mode">夜间模式</string>
