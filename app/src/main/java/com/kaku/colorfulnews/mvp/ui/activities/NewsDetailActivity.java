@@ -104,7 +104,6 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
     @Override
     public void initViews() {
         postId = getIntent().getStringExtra(Constants.NEWS_POST_ID);
-        Toast.makeText(NewsDetailActivity.this, "postId = " + postId, Toast.LENGTH_LONG).show();
 
         mNewsDetailPresenter.setPosId(postId);
         mPresenter = mNewsDetailPresenter;
@@ -116,8 +115,10 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
 
         super.onCreate(savedInstanceState);
         app = (App) getApplication();
+
     }
 
+    //初始化页面数据
     @SuppressWarnings("deprecation")
     @Override
     public void setNewsDetail(NewsDetail newsDetail) {
@@ -134,6 +135,32 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         mNewsDetailFromTv.setText(getString(R.string.news_from, newsSource, newsTime));
         setNewsDetailPhotoIv(NewsImgSrc);
         setNewsDetailBodyTv(newsDetail, newsBody);
+
+        userId = app.person.getUserId();
+        newsUrl = mShareLink;
+        String content = "userId=" + this.userId + "&newsUrl=" + this.newsUrl;
+        if (userId.length()>0) {
+            Toast.makeText(NewsDetailActivity.this, "userId yes = " + userId, Toast.LENGTH_LONG).show();
+            AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/user/news",content, new AsyncNetUtil.Callback() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        jsonString = "[" + response + "]";
+                        jsonArray = new JSONArray(jsonString);
+                        jsonObject = jsonArray.getJSONObject(0);
+                        if (jsonObject.getString("status").equals("success")) {
+//                            Toast.makeText(NewsDetailActivity.this, "已经收藏了", Toast.LENGTH_SHORT).show();
+                            mFab.setImageResource(R.drawable.ic_stared);
+                        } else {
+//                            Toast.makeText(NewsDetailActivity.this, "你还没有收藏哦", Toast.LENGTH_SHORT).show();
+                            mFab.setImageResource(R.drawable.ic_star);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
     }
 
     private void setToolBarLayout(String newsTitle) {
@@ -307,11 +334,10 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         startActivity(Intent.createChooser(intent, getTitle()));*/
 
         if (app.person.getUserId().isEmpty()) {
-            Toast.makeText(NewsDetailActivity.this, "你还没有登录哦--"+mShareLink, Toast.LENGTH_LONG).show();
+            Toast.makeText(NewsDetailActivity.this, "你还没有登录哦--" + mShareLink, Toast.LENGTH_LONG).show();
         } else {
             userId = app.person.getUserId();
             newsUrl = mShareLink;
-            Toast.makeText(NewsDetailActivity.this, userId+" 你点击了分享按钮哦--" +newsUrl, Toast.LENGTH_LONG).show();
             String content = "userId=" + this.userId + "&newsUrl=" + this.newsUrl;
             AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/news/collect", content, new AsyncNetUtil.Callback() {
                 @Override
