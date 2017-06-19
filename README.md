@@ -2,9 +2,7 @@
 
 类似今日头条的新闻资讯`app` 采用`MVP+[RxJava]`模式  用户部分采用本地接口
 
-项目基于 [MvpApp](https://github.com/Rukey7/MvpApp)
-
-##### ScreenShot：
+## Preview：
 
 <img src="screenshot/1.png" width = "40%" />
 <img src="screenshot/2.png" width = "40%" />
