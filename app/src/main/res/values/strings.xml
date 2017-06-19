@@ -20,6 +20,15 @@
     <string name="night_mode">夜间模式</string>
     <string name="about">关于</string>
 
+    <string name="setting_cache">自动缓存</string>
+    <string name="setting_image">无图模式</string>
+    <string name="setting_night">夜间模式</string>
+    <string name="setting_feedback">意见反馈</string>
+    <string name="setting_clear">清除缓存</string>
+    <string name="setting_update">检查更新</string>
+    <string name="setting_normal">常规</string>
+    <string name="setting_other">其他</string>
+
     <!-- 新闻 -->
     <string name="load_error">加载失败</string>
     <string name="db_error">数据库出错了</string>
@@ -68,5 +77,6 @@
 
     <string name="user_login">登录</string>
     <string name="user_register">用户注册</string>
+    <string name="user_logout">退出账号</string>
 
 </resources>
