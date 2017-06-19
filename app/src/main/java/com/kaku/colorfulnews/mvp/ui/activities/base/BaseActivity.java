@@ -42,7 +42,9 @@ import com.kaku.colorfulnews.mvp.ui.activities.NewsActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.NewsDetailActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.PhotoDetailActivity;
+import com.kaku.colorfulnews.mvp.ui.activities.ProfileActivity;
 import com.kaku.colorfulnews.mvp.ui.activities.RegisterActivity;
+import com.kaku.colorfulnews.mvp.ui.activities.SettingActivity;
 import com.kaku.colorfulnews.mvp.ui.adapter.PersonAdapter;
 import com.kaku.colorfulnews.utils.MyUtils;
 import com.kaku.colorfulnews.utils.NetUtil;
@@ -81,9 +83,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected Subscription mSubscription;
     protected NavigationView mBaseNavView;
 
+    protected  LinearLayout login_activity_group;
+    protected  LinearLayout user_activity_info;
     protected View drawHeader;
     App app;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,6 +200,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
                         case R.id.nav_about:
                             mClass = AboutActivity.class;
                             break;
+                        case R.id.nav_setting:
+                            mClass = SettingActivity.class;
+                            break;
                         case R.id.nav_calendar:
                             mClass = CalendarActivity.class;
                             break;
@@ -232,26 +238,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this);
-                builder.setTitle("提示");
-                builder.setMessage("确定退出当前用户吗?");
-                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        app.person.logout();
-                        LinearLayout login_activity_group = (LinearLayout)drawHeader.findViewById(R.id.login_activity_group);
-                        login_activity_group.setVisibility(View.VISIBLE);
-                        LinearLayout user_activity_info = (LinearLayout)drawHeader.findViewById(R.id.user_info);
-                        user_activity_info.setVisibility(View.GONE);
-                    }
-                });
-                builder.show();
+                Intent intent =  new Intent(BaseActivity.this,ProfileActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -407,6 +395,34 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             mWindowManager.removeViewImmediate(mNightView);
             mWindowManager = null;
             mNightView = null;
+        }
+    }
+
+    protected void userLogout()
+    {
+        if (app.person.getUserId().length() > 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this);
+            builder.setTitle("提示");
+            builder.setMessage("确定退出当前用户吗?");
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    app.person.logout();
+                    LinearLayout login_activity_group = (LinearLayout) drawHeader.findViewById(R.id.login_activity_group);
+                    login_activity_group.setVisibility(View.VISIBLE);
+                    LinearLayout user_activity_info = (LinearLayout) drawHeader.findViewById(R.id.user_info);
+                    user_activity_info.setVisibility(View.GONE);
+                }
+            });
+            builder.show();
+        }else{
+            Toast.makeText(BaseActivity.this, "你还没有登录哦", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -16,7 +16,6 @@ public class CalendarActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-
         return R.layout.fragment_calender;
     }
 
