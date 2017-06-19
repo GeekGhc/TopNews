@@ -2,6 +2,7 @@ package com.kaku.colorfulnews.mvp.ui.activities.base;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Build;
@@ -11,6 +12,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.SwitchCompat;
@@ -20,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -79,6 +82,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected NavigationView mBaseNavView;
 
     protected View drawHeader;
+    App app;
 
 
     @Override
@@ -90,6 +94,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         initActivityComponent();
         setStatusBarTranslucent();
         setNightOrDayMode();
+
+        app = (App)getApplication();
 
         int layoutId = getLayoutId();
         setContentView(layoutId);
@@ -219,6 +225,33 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             public void onClick(View v) {
                 Intent intent =  new Intent(BaseActivity.this,RegisterActivity.class);
                 startActivity(intent);
+            }
+        });
+        //头部用户头像点击退出
+        ImageView logout = (ImageView)drawHeader.findViewById(R.id.hd_avatar);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this);
+                builder.setTitle("提示");
+                builder.setMessage("确定退出当前用户吗?");
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        app.person.logout();
+                        LinearLayout login_activity_group = (LinearLayout)drawHeader.findViewById(R.id.login_activity_group);
+                        login_activity_group.setVisibility(View.VISIBLE);
+                        LinearLayout user_activity_info = (LinearLayout)drawHeader.findViewById(R.id.user_info);
+                        user_activity_info.setVisibility(View.GONE);
+                    }
+                });
+                builder.show();
             }
         });
 

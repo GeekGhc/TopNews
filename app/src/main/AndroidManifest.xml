@@ -20,13 +20,11 @@
             android:name=".mvp.ui.activities.SplashActivity"
             android:excludeFromRecents="false"
             android:theme="@style/BaseAppTheme.Trans">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".mvp.ui.activities.NewsActivity"
@@ -56,20 +54,15 @@
             android:name=".mvp.ui.activities.CalendarActivity"
             android:label="@string/title_activity_calendar" />
         <activity android:name=".mvp.ui.activities.VideosActivity" />
-
         <activity
             android:name=".mvp.ui.activities.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:theme="@style/BaseAppTheme.Login">
-
-        </activity>
-
+            android:theme="@style/BaseAppTheme.Login"></activity>
         <activity
             android:name=".mvp.ui.activities.LoginActivity"
-            android:theme="@style/BaseAppTheme.Login">
-
-        </activity>
-        <activity android:name=".mvp.ui.activities.DrawerActivity"></activity>
+            android:theme="@style/BaseAppTheme.Login"></activity>
+        <activity android:name=".mvp.ui.activities.DrawerActivity" />
+        <activity android:name=".mvp.ui.activities.ProfileActivity"></activity>
     </application>
 
 </manifest>
