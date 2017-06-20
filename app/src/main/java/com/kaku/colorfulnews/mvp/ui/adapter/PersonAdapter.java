@@ -11,7 +11,10 @@ public class PersonAdapter implements Serializable {
     private String phone = "";
 
     public PersonAdapter() {
-
+        this.userId = "";
+        this.name = "";
+        this.avatarSrc = "";
+        this.desc = "";
     }
 
     public PersonAdapter(String userId, String name, String avatarSrc, String desc) {

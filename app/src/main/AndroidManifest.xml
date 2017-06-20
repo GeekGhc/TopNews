@@ -62,11 +62,14 @@
             android:name=".mvp.ui.activities.LoginActivity"
             android:theme="@style/BaseAppTheme.Login" />
         <activity android:name=".mvp.ui.activities.DrawerActivity" />
-        <activity android:name=".mvp.ui.activities.ProfileActivity" />
+        <activity
+            android:name=".mvp.ui.activities.ProfileActivity"
+            android:theme="@style/BaseAppTheme.Login"
+            >
+        </activity>
         <activity
             android:name=".mvp.ui.activities.SettingActivity"
-            android:theme="@style/BaseAppTheme"
-            >
+            android:theme="@style/BaseAppTheme">
 
         </activity>
     </application>

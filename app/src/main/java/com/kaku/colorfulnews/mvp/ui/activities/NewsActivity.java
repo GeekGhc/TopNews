@@ -49,17 +49,17 @@ public class NewsActivity extends BaseActivity
     App app;
 
     @BindView(R.id.toolbar)//头部板块
-    Toolbar mToolbar;
+            Toolbar mToolbar;
     @BindView(R.id.tabs)//选项卡(新闻类型)
-    TabLayout mTabs;
+            TabLayout mTabs;
     @BindView(R.id.view_pager)//新闻展示内容页
-    ViewPager mViewPager;
+            ViewPager mViewPager;
     @BindView(R.id.nav_view)//侧边栏
-    NavigationView mNavView;
+            NavigationView mNavView;
     @BindView(R.id.fab)//新闻详情页收藏
-    FloatingActionButton mFab;
+            FloatingActionButton mFab;
     @BindView(R.id.drawer_layout)//替换页面
-    DrawerLayout mDrawerLayout;
+            DrawerLayout mDrawerLayout;
 
     @Inject
     NewPresenterImpl mNewsPresenter;
@@ -80,21 +80,25 @@ public class NewsActivity extends BaseActivity
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         this.drawHeader = navView.getHeaderView(0);
         Intent intent = getIntent();
-        app = (App)getApplication();
-        app.person = (PersonAdapter)intent.getSerializableExtra("user");
-        if(app.person!=null){
-            LinearLayout login_activity_group = (LinearLayout)drawHeader.findViewById(R.id.login_activity_group);
+        app = (App) getApplication();
+        app.person = (PersonAdapter) intent.getSerializableExtra("user");
+        if (app.person != null) {
+            LinearLayout login_activity_group = (LinearLayout) drawHeader.findViewById(R.id.login_activity_group);
             login_activity_group.setVisibility(View.GONE);
-            LinearLayout user_activity_info = (LinearLayout)drawHeader.findViewById(R.id.user_info);
+            LinearLayout user_activity_info = (LinearLayout) drawHeader.findViewById(R.id.user_info);
             user_activity_info.setVisibility(View.VISIBLE);
-            TextView user_name =(TextView)drawHeader.findViewById(R.id.hd_name);
+            TextView user_name = (TextView) drawHeader.findViewById(R.id.hd_name);
             user_name.setText(app.person.getUserName());
-        }else{
+            if (app.person.getDesc().equals("null")) {
+
+            }
+            TextView user_desc = (TextView) drawHeader.findViewById(R.id.hd_desc);
+            user_desc.setText(app.person.getDesc());
+        } else {
             app.person = new PersonAdapter();
         }
-//        Toast.makeText(NewsActivity.this, "data = "+app.person.getUserName(), Toast.LENGTH_LONG).show();
-
     }
+//        Toast.makeText(NewsActivity.this, "data = "+app.person.getUserName(), Toast.LENGTH_LONG).show();
 
 
     @Override

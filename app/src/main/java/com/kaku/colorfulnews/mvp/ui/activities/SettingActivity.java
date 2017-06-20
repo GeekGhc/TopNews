@@ -21,7 +21,11 @@ import com.kaku.colorfulnews.App;
 import com.kaku.colorfulnews.R;
 import com.kaku.colorfulnews.event.ChannelItemMoveEvent;
 import com.kaku.colorfulnews.mvp.ui.activities.base.BaseActivity;
+import com.kaku.colorfulnews.mvp.ui.adapter.PersonAdapter;
 import com.kaku.colorfulnews.utils.RxBus;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +38,10 @@ public class SettingActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
     private Class mClass;
     private boolean mIsChangeTheme;
+
+    private JSONArray jsonArray = null;
+    private JSONObject jsonObject;
+    private String jsonString = "";
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -65,12 +73,13 @@ public class SettingActivity extends BaseActivity {
 
     private void initDrawerLayout() {
         TextView btn_logout = (TextView) findViewById(R.id.btn_logout);
-        btn_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                userLogout();
-            }
-        });
+
+    }
+
+    @OnClick(R.id.btn_logout)
+    public void onClick(View view) {
+        Intent intent = new Intent(SettingActivity.this, NewsActivity.class);
+        startActivity(intent);
     }
 
 }

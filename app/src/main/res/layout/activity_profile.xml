@@ -60,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:editable="false"
+                android:focusable="false"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/colorCard" />
         </android.support.design.widget.TextInputLayout>
@@ -76,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone"
-                android:inputType="textEmailAddress"
+                android:inputType="textCapWords"
                 android:textColor="@color/colorCard" />
         </android.support.design.widget.TextInputLayout>
 
