@@ -11,12 +11,56 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_collapseMode="pin"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        app:titleTextColor="@android:color/white"
         android:background="@color/colorPrimary"
         android:subtitleTextColor="@android:color/white"
-        app:title="@string/tools" />
+        app:layout_collapseMode="pin"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/tools"
+        app:titleTextColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/setting_user"
+        android:textSize="18sp" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="#fff"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:id="@+id/update_pwd_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_weight="1"
+                    android:text="@string/updateUserPwd" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_action_right" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -199,16 +243,17 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="12dp">
+
             <TextView
                 android:id="@+id/btn_logout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/colorPrimary"
                 android:clickable="true"
-                android:text="@string/user_logout" />
+                android:gravity="center"
+                android:text="@string/user_logout"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

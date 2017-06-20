@@ -76,10 +76,25 @@ public class SettingActivity extends BaseActivity {
 
     }
 
-    @OnClick(R.id.btn_logout)
+    @OnClick({R.id.btn_logout, R.id.update_pwd_activity})
     public void onClick(View view) {
-        Intent intent = new Intent(SettingActivity.this, NewsActivity.class);
-        startActivity(intent);
+        switch (view.getId()) {
+            case R.id.btn_logout:
+                if (app.person.getUserName().length() > 0) {
+                    Intent intent = new Intent(SettingActivity.this, NewsActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(SettingActivity.this, "你还未登录哦", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.update_pwd_activity:
+                if (app.person.getUserName().length() > 0) {
+                    Intent intent = new Intent(SettingActivity.this, PasswordActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(SettingActivity.this, "你还未登录哦", Toast.LENGTH_SHORT).show();
+                }
+        }
     }
 
 }

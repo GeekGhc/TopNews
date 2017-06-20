@@ -15,6 +15,9 @@
     <string name="photo">图片</string>
     <string name="video">视频</string>
     <string name="collect">收藏</string>
+    <string name="pwdUpdate">密码修改</string>
+    <string name="updateUserPwd">修改账户密码</string>
+    <string name="newPwd">新密码</string>
     <string name="tools">设置</string>
     <string name="no_photo_mode">无图模式</string>
     <string name="night_mode">夜间模式</string>
@@ -28,6 +31,7 @@
     <string name="setting_update">检查更新</string>
     <string name="setting_normal">常规</string>
     <string name="setting_other">其他</string>
+    <string name="setting_user">用户</string>
 
     <!-- 新闻 -->
     <string name="load_error">加载失败</string>
