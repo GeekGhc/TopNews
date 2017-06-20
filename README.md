@@ -4,9 +4,9 @@
 
 ## Preview：
 
-<img src="screenshot/1.png" width = "40%" style="float:left;" /><img src="screenshot/2.png" width = "40%" style="float:left;" />
-<img src="screenshot/3.png" width = "40%" style="float:left;" /><img src="screenshot/4.png" width = "40%" style="float:left;" />
-<img src="screenshot/5.png" width = "40%" style="float:left;" />
+<img src="screenshot/1.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/2.png" width = "40%" style="float:left;" />
+<img src="screenshot/3.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/4.png" width = "40%" style="float:left;" />
+<img src="screenshot/5.png" width = "40%" /> &nbsp;&nbsp;&nbsp;
 
 
 ## Points
@@ -28,8 +28,9 @@
 
 ## Api
 
+- `Api`文档地址 [topnew-api](https://www.eolinker.com/#/share/index?shareCode=URBGwr)
+
 - 图片api [干货集中营](http://gank.io/api)
 - 新闻api [网易新闻](http://c.m.163.com/)
 - 用户信息 [topnews-api](https://github.com/GeekGhc/topnews-api)
 
-- api文档地址 [topnew-api](https://www.eolinker.com/#/share/index?shareCode=URBGwr)
