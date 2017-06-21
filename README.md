@@ -4,9 +4,10 @@
 
 ## Preview：
 
-<img src="screenshot/1.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/2.png" width = "40%" style="float:left;" />
-<img src="screenshot/3.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/4.png" width = "40%" style="float:left;" />
-<img src="screenshot/5.png" width = "40%" /> &nbsp;&nbsp;&nbsp;
+<img src="screenshot/1.gif" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/2.gif" width = "40%" style="float:left;" />
+<img src="screenshot/01.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/02.png" width = "40%" style="float:left;" />
+<img src="screenshot/03.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/04.png" width = "40%" style="float:left;" />
+<img src="screenshot/05.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/06.png" width = "40%" style="float:left;" />
 
 
 ## Points

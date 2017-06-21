@@ -334,7 +334,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         startActivity(Intent.createChooser(intent, getTitle()));*/
 
         if (app.person.getUserId().isEmpty()) {
-            Toast.makeText(NewsDetailActivity.this, "你还没有登录哦--" + mShareLink, Toast.LENGTH_LONG).show();
+            Toast.makeText(NewsDetailActivity.this, "你还没有登录哦", Toast.LENGTH_LONG).show();
         } else {
             userId = app.person.getUserId();
             newsUrl = mShareLink;

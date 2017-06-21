@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                         PersonAdapter personAdapter = new PersonAdapter(jsonObject.getString("id"),jsonObject.getString("name"),jsonObject.getString("avatar"),jsonObject.getString("desc"));
                         Bundle data = new Bundle();
                         data.putSerializable("user",personAdapter);
-                        Toast.makeText(LoginActivity.this, "登录成功"+jsonObject.getString("name"), Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, NewsActivity.class);
                         intent.putExtras(data);
                         startActivity(intent);
