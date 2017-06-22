@@ -150,7 +150,4 @@ public class ProfileActivity extends BaseActivity {
         });
     }
 
-    private void updateProfile() {
-
-    }
 }
