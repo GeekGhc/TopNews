@@ -46,12 +46,25 @@ buildscript {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
-
-
-
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.4.0'
+    compile files('libs/MobCommons-2017.0412.1554.jar')
+    compile files('libs/MobTools-2017.0412.1554.jar')
+    compile files('libs/ShareSDK-Core-2.8.3.jar')
+    compile files('libs/ShareSDK-Douban-2.8.3.jar')
+    compile files('libs/ShareSDK-Email-2.8.3.jar')
+    compile files('libs/ShareSDK-Facebook-2.8.3.jar')
+    compile files('libs/ShareSDK-QQ-2.8.3.jar')
+    compile files('libs/ShareSDK-QZone-2.8.3.jar')
+    compile files('libs/ShareSDK-Renren-2.8.3.jar')
+    compile files('libs/ShareSDK-ShortMessage-2.8.3.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.8.3.jar')
+    compile files('libs/ShareSDK-TecentWeibo-2.8.3.jar')
+    compile files('libs/ShareSDK-Twitter-2.8.3.jar')
+    compile files('libs/ShareSDK-Wechat-2.8.3.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.8.3.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.8.3.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.8.3.jar')
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
     compile 'com.jakewharton:butterknife:8.0.1'
