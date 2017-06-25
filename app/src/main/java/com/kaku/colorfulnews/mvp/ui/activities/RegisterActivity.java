@@ -14,8 +14,13 @@ import android.widget.Toast;
 import com.kaku.colorfulnews.R;
 import com.kaku.colorfulnews.http.MyHttpClientImpl;
 import com.kaku.colorfulnews.mvp.ui.activities.base.BaseActivity;
+import com.kaku.colorfulnews.mvp.ui.adapter.PersonAdapter;
 import com.kaku.colorfulnews.utils.AsyncNetUtil;
 import com.kaku.colorfulnews.utils.NetUtil;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,6 +50,10 @@ public class RegisterActivity extends Activity{
     private String password;
     private String url;
     private Handler handler = new Handler();
+
+    private JSONArray jsonArray = null;
+    private JSONObject jsonObject;
+    private String jsonString = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,10 +86,23 @@ public class RegisterActivity extends Activity{
         AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/user/register", content,new AsyncNetUtil.Callback(){
             @Override
             public void onResponse(String response) {
-                Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-                Toast.makeText(RegisterActivity.this, "返回 = "+response, Toast.LENGTH_SHORT).show();
+                try {
+                    jsonString = "[" + response + "]";
+                    jsonArray = new JSONArray(jsonString);
+                    jsonObject = jsonArray.getJSONObject(0);
+                    if (jsonObject.getString("status").equals("success")) {
+                        jsonString = "["+jsonObject.getString("user")+"]";
+                        jsonArray = new JSONArray(jsonString);
+                        jsonObject = jsonArray.getJSONObject(0);
+                        Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(RegisterActivity.this, jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

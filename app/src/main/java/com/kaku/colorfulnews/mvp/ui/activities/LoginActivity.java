@@ -96,7 +96,6 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
         AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/user/login", content, new AsyncNetUtil.Callback() {
             @Override
             public void onResponse(String response) {
-//                Toast.makeText(LoginActivity.this, "返回 = " + response, Toast.LENGTH_SHORT).show();
                 try {
                     jsonString = "[" + response + "]";
                     jsonArray = new JSONArray(jsonString);
@@ -126,15 +125,15 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
     private void authorize(Platform plat) {
         if (plat.isValid()) {
             String userId = plat.getDb().getUserId();
-            Log.i("----id",userId);
             if (!TextUtils.isEmpty(userId)) {
                 UIHandler.sendEmptyMessage(MSG_USERID_FOUND, this);
                 if (plat.getName().equals("QQ")) {
-                    socialLogin(plat.getName(), userId, mapQQ);
-
+                    Toast.makeText(LoginActivity.this, "这是QQ", Toast.LENGTH_SHORT).show();
+//                    socialLogin(plat.getName(), userId, mapQQ);
                 }
                 else if (plat.getName().equals("TencentWeibo")) {
-                    socialLogin(plat.getName(), userId, mapSina);
+                    Toast.makeText(LoginActivity.this, "这是微博", Toast.LENGTH_SHORT).show();
+//                    socialLogin(plat.getName(), userId, mapSina);
                 }
                 return;
             }
@@ -151,9 +150,10 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
         msg.obj = plat;
         UIHandler.sendMessage(msg, this);
         //跳转到第二个页面，获取到的数据就在这里
-        Intent intent = new Intent(LoginActivity.this, SecondActivity.class);
+        Toast.makeText(LoginActivity.this, "data = "+userInfo, Toast.LENGTH_SHORT).show();
+       /* Intent intent = new Intent(LoginActivity.this, SecondActivity.class);
         intent.putExtra("userinfo", "userinfo:" + userInfo.toString());
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     //一定要停止
@@ -163,6 +163,7 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
         super.onDestroy();
     }
 
+    @Override
     public void onComplete(Platform platform, int action,
                            HashMap<String, Object> res) {
         if (action == Platform.ACTION_USER_INFOR) {

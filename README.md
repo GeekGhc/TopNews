@@ -8,6 +8,7 @@
 <img src="screenshot/01.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/02.png" width = "40%" style="float:left;" />
 <img src="screenshot/03.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/04.png" width = "40%" style="float:left;" />
 <img src="screenshot/05.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/06.png" width = "40%" style="float:left;" />
+<img src="screenshot/07.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/08.png" width = "40%" style="float:left;" />
 
 
 ## Points
@@ -25,6 +26,9 @@
 * 使用RecyclerView实现下拉刷新、上拉加载、侧滑删除、长按拖曳
 * 使用x5WebView做阅览页，比原生WebView体验更佳
 * 使用原生的夜间模式、分享、反馈
+* 使用MaterialCalendarview实现日历查看
+* 使用ShareSdk的第三方登录QQ和微博
+* 使用ShareSdk的分享到第三方
 * 包含收藏等功能
 
 ## Api
