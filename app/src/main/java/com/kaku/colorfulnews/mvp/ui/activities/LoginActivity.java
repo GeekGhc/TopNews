@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
         ShareSDK.initSDK(this);
     }
 
-    @OnClick({R.id.link_signup, R.id.btn_login,R.id.btn_login_qq,R.id.btn_login_weibo})
+    @OnClick({R.id.link_signup, R.id.btn_login, R.id.btn_login_qq, R.id.btn_login_weibo})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.link_signup:
@@ -78,11 +78,9 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
                 login();
                 break;
             case R.id.btn_login_qq:
-                Toast.makeText(LoginActivity.this, "QQ登录", Toast.LENGTH_SHORT).show();
                 authorize(new QQ(this));
                 break;
             case R.id.btn_login_weibo:
-                Toast.makeText(LoginActivity.this, "微博登录", Toast.LENGTH_SHORT).show();
                 authorize(new SinaWeibo(this));
                 break;
         }
@@ -101,12 +99,12 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
                     jsonArray = new JSONArray(jsonString);
                     jsonObject = jsonArray.getJSONObject(0);
                     if (jsonObject.getString("status").equals("success")) {
-                        jsonString = "["+jsonObject.getString("user")+"]";
+                        jsonString = "[" + jsonObject.getString("user") + "]";
                         jsonArray = new JSONArray(jsonString);
                         jsonObject = jsonArray.getJSONObject(0);
-                        PersonAdapter personAdapter = new PersonAdapter(jsonObject.getString("id"),jsonObject.getString("name"),jsonObject.getString("avatar"),jsonObject.getString("desc"));
+                        PersonAdapter personAdapter = new PersonAdapter(jsonObject.getString("id"), jsonObject.getString("name"), jsonObject.getString("avatar"), jsonObject.getString("desc"));
                         Bundle data = new Bundle();
-                        data.putSerializable("user",personAdapter);
+                        data.putSerializable("user", personAdapter);
                         Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, NewsActivity.class);
                         intent.putExtras(data);
@@ -122,18 +120,16 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
     }
 
 
+    //第三方授权
     private void authorize(Platform plat) {
-        if (plat.isValid()) {
+        if (plat.isAuthValid()) {
             String userId = plat.getDb().getUserId();
             if (!TextUtils.isEmpty(userId)) {
                 UIHandler.sendEmptyMessage(MSG_USERID_FOUND, this);
                 if (plat.getName().equals("QQ")) {
-                    Toast.makeText(LoginActivity.this, "这是QQ", Toast.LENGTH_SHORT).show();
-//                    socialLogin(plat.getName(), userId, mapQQ);
-                }
-                else if (plat.getName().equals("TencentWeibo")) {
-                    Toast.makeText(LoginActivity.this, "这是微博", Toast.LENGTH_SHORT).show();
-//                    socialLogin(plat.getName(), userId, mapSina);
+                    socialLogin(plat,plat.getName(), userId, mapQQ);
+                } else if (plat.getName().equals("SinaWeibo")) {
+                    socialLogin(plat,plat.getName(), userId, mapSina);
                 }
                 return;
             }
@@ -144,14 +140,72 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
         plat.showUser(null);//获得用户数据
     }
 
-    private void socialLogin(String plat, String userId, HashMap<String, Object> userInfo) {
+    private void socialLogin(Platform platform,String plat, String userId, HashMap<String, Object> userInfo) {
         Message msg = new Message();
         msg.what = MSG_LOGIN;
         msg.obj = plat;
         UIHandler.sendMessage(msg, this);
         //跳转到第二个页面，获取到的数据就在这里
-        Toast.makeText(LoginActivity.this, "data = "+userInfo, Toast.LENGTH_SHORT).show();
-       /* Intent intent = new Intent(LoginActivity.this, SecondActivity.class);
+        if (plat.equals("QQ")) {
+            Toast.makeText(LoginActivity.this, "qqData = " + platform.getDb().getUserName(), Toast.LENGTH_SHORT).show();
+            String content = "social_type=QQ&social_id=" + userId +"&name="+platform.getDb().getUserName();
+            AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/user/socialLogin", content, new AsyncNetUtil.Callback() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        jsonString = "[" + response + "]";
+                        jsonArray = new JSONArray(jsonString);
+                        jsonObject = jsonArray.getJSONObject(0);
+                        if (jsonObject.getString("status").equals("success")) {
+                            jsonString = "[" + jsonObject.getString("user") + "]";
+                            jsonArray = new JSONArray(jsonString);
+                            jsonObject = jsonArray.getJSONObject(0);
+                            PersonAdapter personAdapter = new PersonAdapter(jsonObject.getString("id"), jsonObject.getString("name"), jsonObject.getString("avatar"), jsonObject.getString("desc"));
+                            Bundle data = new Bundle();
+                            data.putSerializable("user", personAdapter);
+                            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(LoginActivity.this, NewsActivity.class);
+                            intent.putExtras(data);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(LoginActivity.this, "第三方未知错误", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } else {
+            Toast.makeText(LoginActivity.this, "qqData = " + platform.getDb().getUserName(), Toast.LENGTH_SHORT).show();
+            String content = "social_type=SinaWeibo&social_id=" + userId + "&name=" + platform.getDb().getUserName();
+            AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/user/socialLogin", content, new AsyncNetUtil.Callback() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        jsonString = "[" + response + "]";
+                        jsonArray = new JSONArray(jsonString);
+                        jsonObject = jsonArray.getJSONObject(0);
+                        if (jsonObject.getString("status").equals("success")) {
+                            jsonString = "[" + jsonObject.getString("user") + "]";
+                            jsonArray = new JSONArray(jsonString);
+                            jsonObject = jsonArray.getJSONObject(0);
+                            PersonAdapter personAdapter = new PersonAdapter(jsonObject.getString("id"), jsonObject.getString("name"), jsonObject.getString("avatar"), jsonObject.getString("desc"));
+                            Bundle data = new Bundle();
+                            data.putSerializable("user", personAdapter);
+                            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(LoginActivity.this, NewsActivity.class);
+                            intent.putExtras(data);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(LoginActivity.this, "第三方未知错误", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+        /*Intent intent = new Intent(LoginActivity.this, SecondActivity.class);
         intent.putExtra("userinfo", "userinfo:" + userInfo.toString());
         startActivity(intent);*/
     }
@@ -171,13 +225,12 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
             if (platform.getName().equals("QQ")) {
                 mapQQ.clear();
                 mapQQ.putAll(res);
-            }
-            else if (platform.getName().equals("TencentWeibo")) {
+            } else if (platform.getName().equals("SinaWeibo")) {
                 mapSina.clear();
                 mapSina.putAll(res);
             }
             UIHandler.sendEmptyMessage(MSG_AUTH_COMPLETE, this);
-            socialLogin(platform.getName(), platform.getDb().getUserId(), res);
+            socialLogin(platform,platform.getName(), platform.getDb().getUserId(), res);
         }
         System.out.println(res);
     }

@@ -89,16 +89,16 @@ public class NewsActivity extends BaseActivity
             user_activity_info.setVisibility(View.VISIBLE);
             TextView user_name = (TextView) drawHeader.findViewById(R.id.hd_name);
             user_name.setText(app.person.getUserName());
-            if (app.person.getDesc().equals("null")) {
-
-            }
             TextView user_desc = (TextView) drawHeader.findViewById(R.id.hd_desc);
-            user_desc.setText(app.person.getDesc());
+            if (app.person.getDesc().equals("null")) {
+                user_desc.setText("");
+            }else{
+                user_desc.setText(app.person.getDesc());
+            }
         } else {
             app.person = new PersonAdapter();
         }
     }
-//        Toast.makeText(NewsActivity.this, "data = "+app.person.getUserName(), Toast.LENGTH_LONG).show();
 
 
     @Override
