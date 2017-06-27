@@ -86,6 +86,7 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
         }
     }
 
+    //用户登录
     private void login() {
         this.email = this.input_email.getText().toString();
         this.password = this.input_password.getText().toString();
@@ -127,9 +128,9 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
             if (!TextUtils.isEmpty(userId)) {
                 UIHandler.sendEmptyMessage(MSG_USERID_FOUND, this);
                 if (plat.getName().equals("QQ")) {
-                    socialLogin(plat,plat.getName(), userId, mapQQ);
+                    socialLogin(plat, plat.getName(), userId, mapQQ);
                 } else if (plat.getName().equals("SinaWeibo")) {
-                    socialLogin(plat,plat.getName(), userId, mapSina);
+                    socialLogin(plat, plat.getName(), userId, mapSina);
                 }
                 return;
             }
@@ -140,15 +141,16 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
         plat.showUser(null);//获得用户数据
     }
 
-    private void socialLogin(Platform platform,String plat, String userId, HashMap<String, Object> userInfo) {
+    //第三方登录
+    private void socialLogin(Platform platform, String plat, String userId, HashMap<String, Object> userInfo) {
         Message msg = new Message();
         msg.what = MSG_LOGIN;
         msg.obj = plat;
         UIHandler.sendMessage(msg, this);
         //跳转到第二个页面，获取到的数据就在这里
         if (plat.equals("QQ")) {
-            Toast.makeText(LoginActivity.this, "qqData = " + platform.getDb().getUserName(), Toast.LENGTH_SHORT).show();
-            String content = "social_type=QQ&social_id=" + userId +"&name="+platform.getDb().getUserName();
+//            Toast.makeText(LoginActivity.this, "qqData = " + platform.getDb().getUserName(), Toast.LENGTH_SHORT).show();
+            String content = "social_type=QQ&social_id=" + userId + "&name=" + platform.getDb().getUserName();
             AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/user/socialLogin", content, new AsyncNetUtil.Callback() {
                 @Override
                 public void onResponse(String response) {
@@ -176,7 +178,7 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
                 }
             });
         } else {
-            Toast.makeText(LoginActivity.this, "qqData = " + platform.getDb().getUserName(), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(LoginActivity.this, "weiboData = " + platform.getDb().getUserName(), Toast.LENGTH_SHORT).show();
             String content = "social_type=SinaWeibo&social_id=" + userId + "&name=" + platform.getDb().getUserName();
             AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/user/socialLogin", content, new AsyncNetUtil.Callback() {
                 @Override
@@ -205,9 +207,6 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
                 }
             });
         }
-        /*Intent intent = new Intent(LoginActivity.this, SecondActivity.class);
-        intent.putExtra("userinfo", "userinfo:" + userInfo.toString());
-        startActivity(intent);*/
     }
 
     //一定要停止
@@ -230,7 +229,7 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
                 mapSina.putAll(res);
             }
             UIHandler.sendEmptyMessage(MSG_AUTH_COMPLETE, this);
-            socialLogin(platform,platform.getName(), platform.getDb().getUserId(), res);
+            socialLogin(platform, platform.getName(), platform.getDb().getUserId(), res);
         }
         System.out.println(res);
     }

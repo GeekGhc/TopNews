@@ -133,6 +133,7 @@ public class NewsActivity extends BaseActivity
         }
     }
 
+    //初始化viewPage
     @Override
     public void initViewPager(List<NewsChannelTable> newsChannels) {
         final List<String> channelNames = new ArrayList<>();
@@ -162,7 +163,7 @@ public class NewsActivity extends BaseActivity
         return fragment;
     }
 
-    //设置显示叶爱民
+    //设置显示页面
     private void setViewPager(List<String> channelNames) {
         NewsFragmentPagerAdapter adapter = new NewsFragmentPagerAdapter(
                 getSupportFragmentManager(), channelNames, mNewsFragmentList);

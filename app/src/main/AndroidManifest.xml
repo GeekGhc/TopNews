@@ -115,7 +115,6 @@
             android:name="Mob-AppSecret"
             android:value="d1599feaa3af6c24343125a8438c441c" />
 
-        <activity android:name=".mvp.ui.activities.SecondActivity"></activity>
     </application>
 
 </manifest>

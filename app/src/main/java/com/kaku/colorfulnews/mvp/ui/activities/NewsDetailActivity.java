@@ -66,8 +66,6 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
     CollapsingToolbarLayout mToolbarLayout;
     @BindView(R.id.app_bar)
     AppBarLayout mAppBar;
-    /*    @BindView(R.id.news_detail_title_tv)
-        TextView mNewsDetailTitleTv;*/
     @BindView(R.id.news_detail_from_tv)
     TextView mNewsDetailFromTv;
     @BindView(R.id.news_detail_body_tv)
@@ -143,7 +141,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         newsUrl = mShareLink;
         String content = "userId=" + this.userId + "&newsUrl=" + this.newsUrl;
         if (userId.length()>0) {
-            Toast.makeText(NewsDetailActivity.this, "userId yes = " + userId, Toast.LENGTH_LONG).show();
+//            Toast.makeText(NewsDetailActivity.this, "userId yes = " + userId, Toast.LENGTH_LONG).show();
             AsyncNetUtil.post("http://10.0.3.2:8000/api/v1/user/news",content, new AsyncNetUtil.Callback() {
                 @Override
                 public void onResponse(String response) {
@@ -360,6 +358,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
     private boolean isCollected() {
         return true;
     }
+
 
     private void collect() {
 

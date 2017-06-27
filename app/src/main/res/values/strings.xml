@@ -48,7 +48,7 @@
     <string name="share_contents">来自「今日头条」的分享：%1$s %2$s</string>
     <string name="web_view">WebView</string>
     <string name="browser">用浏览器打开</string>
-    <string name="retry_refresh_news">Wow 重新加载一下吧</string>
+    <string name="retry_refresh_news">试试重新加载</string>
 
     <!-- 共享过度动画 -->
     <string name="transition_photos">transition_animation_news_photos</string>
