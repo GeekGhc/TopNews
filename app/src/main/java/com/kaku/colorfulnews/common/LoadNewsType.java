@@ -1,4 +1,3 @@
-
 package com.kaku.colorfulnews.common;
 
 import android.support.annotation.IntDef;

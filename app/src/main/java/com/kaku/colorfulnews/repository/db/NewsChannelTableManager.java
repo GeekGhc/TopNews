@@ -1,4 +1,3 @@
-
 package com.kaku.colorfulnews.repository.db;
 
 import com.kaku.colorfulnews.App;

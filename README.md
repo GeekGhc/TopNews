@@ -9,6 +9,7 @@
 <img src="screenshot/03.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/04.png" width = "40%" style="float:left;" />
 <img src="screenshot/05.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/06.png" width = "40%" style="float:left;" />
 <img src="screenshot/07.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/08.png" width = "40%" style="float:left;" />
+<img src="screenshot/09.png" width = "40%" /> &nbsp;&nbsp;&nbsp; <img src="screenshot/10.png" width = "40%" style="float:left;" />
 
 
 ## Points
@@ -22,6 +23,7 @@
 * 使用Material Design控件和动画
 * 使用MVP架构整个项目，对应于model、ui、presenter三个包
 * 使用Glide做图片的处理和加载
+* 使用GreenDao存储删除添加频道信息
 * 使用Fragmentation简化Fragment的操作和懒加载
 * 使用RecyclerView实现下拉刷新、上拉加载、侧滑删除、长按拖曳
 * 使用x5WebView做阅览页，比原生WebView体验更佳
