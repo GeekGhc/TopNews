@@ -366,12 +366,6 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
 
     private void collect() {
 
-        /*Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share));
-        intent.putExtra(Intent.EXTRA_TEXT, getShareContents());
-        startActivity(Intent.createChooser(intent, getTitle()));*/
-
         if (app.person.getUserId().isEmpty()) {
             Toast.makeText(NewsDetailActivity.this, "你还没有登录哦", Toast.LENGTH_LONG).show();
         } else {
